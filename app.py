@@ -17,15 +17,22 @@ scope = [
     "https://www.googleapis.com/auth/drive"
 ]
 
+import json
+
 try:
-    creds = ServiceAccountCredentials.from_json_keyfile_name("credentials.json", scope)
+    creds_raw = os.environ.get("GOOGLE_CREDENTIALS")
+    creds_dict = json.loads(creds_raw)
+
+    # fix newline issue
+    creds_dict["private_key"] = creds_dict["private_key"].replace("\\n", "\n")
+
+    creds = ServiceAccountCredentials.from_json_keyfile_dict(creds_dict, scope)
     client = gspread.authorize(creds)
     sheet = client.open("Evaluation Scores").sheet1
+
 except Exception as e:
     print("Google Sheets error:", e)
     sheet = None
-
-
 ADMIN_USERNAME = "Admin"
 ADMIN_PASSWORD = "GSSS@123"
 
