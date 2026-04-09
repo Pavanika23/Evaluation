@@ -1,0 +1,6 @@
+services:
+  - type: web
+    name: cognithon-evaluation
+    runtime: python
+    buildCommand: ""
+    startCommand: gunicorn app:app

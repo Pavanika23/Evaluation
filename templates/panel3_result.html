@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+<title>Panel 3 Result</title>
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<link rel="stylesheet" href="/static/style.css">
+
+<style>
+
+.rank-card{
+    background:#0c1533;
+    padding:18px;
+    border-radius:12px;
+    margin:12px 0;
+    box-shadow:0 0 12px rgba(0,229,255,0.25);
+}
+
+.rank1{ border-left:6px solid gold;}
+.rank2{ border-left:6px solid silver;}
+.rank3{ border-left:6px solid #cd7f32;}
+
+.rank-title{
+    font-size:20px;
+    font-weight:bold;
+    margin-bottom:8px;
+}
+
+.team-name{
+    font-size:18px;
+    color:#00e5ff;
+    margin:4px 0;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="navbar">
+
+<div class="nav-left">
+Panel 3 Result
+</div>
+
+<div class="nav-right">
+
+<a href="/admin/dashboard">Back</a>
+
+</div>
+
+</div>
+
+
+<div class="container">
+
+<h2>🏆 Top 3 Teams</h2>
+
+
+<!-- 1st PLACE -->
+
+<div class="rank-card rank1">
+
+<div class="rank-title">
+
+🥇 1st Place
+
+</div>
+
+
+{% if top3[0] %}
+
+{% for team in top3[0] %}
+
+<div class="team-name">
+
+{{ team.team_name }}
+
+</div>
+
+{% endfor %}
+
+{% else %}
+
+<div class="team-name">
+
+TBD
+
+</div>
+
+{% endif %}
+
+</div>
+
+
+
+<!-- 2nd PLACE -->
+
+<div class="rank-card rank2">
+
+<div class="rank-title">
+
+🥈 2nd Place
+
+</div>
+
+
+{% if top3[1] %}
+
+{% for team in top3[1] %}
+
+<div class="team-name">
+
+{{ team.team_name }}
+
+</div>
+
+{% endfor %}
+
+{% else %}
+
+<div class="team-name">
+
+TBD
+
+</div>
+
+{% endif %}
+
+</div>
+
+
+
+<!-- 3rd PLACE -->
+
+<div class="rank-card rank3">
+
+<div class="rank-title">
+
+🥉 3rd Place
+
+</div>
+
+
+{% if top3[2] %}
+
+{% for team in top3[2] %}
+
+<div class="team-name">
+
+{{ team.team_name }}
+
+</div>
+
+{% endfor %}
+
+{% else %}
+
+<div class="team-name">
+
+TBD
+
+</div>
+
+{% endif %}
+
+</div>
+
+
+
+<a class="btn primary wide" href="/download-panel/Panel-3">
+
+Download Excel
+
+</a>
+
+
+</div>
+
+</body>
+
+</html>

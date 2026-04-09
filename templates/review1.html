@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>{{ panel }} - Review 1</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+
+<body>
+
+    <div class="navbar">
+        <div class="nav-left">{{ panel }} – Review 1</div>
+        <div class="nav-right">
+            <a href="/panel/{{panel}}">Back to Panel</a>
+        </div>
+    </div>
+
+    <div class="container">
+        <img src="/static/logo.png" class="logo">
+
+        <form method="POST">
+
+            <p class="readonly-box">Evaluator: {{ evaluator }}</p>
+
+            <select name="team" id="teamSelect" onchange="loadProblem()" required>
+                {% for t in teams %}
+                <option value="{{t}}">
+                    {% if t == "Ctrlshe" %}
+                    Ctrl+she
+                    {% else %}
+                    {{t}}
+                    {% endif %}
+                </option>
+                {% endfor %}
+            </select>
+
+            <label>Problem Statement</label>
+            <textarea id="problemBox" class="readonly-box" readonly></textarea>
+
+            {% for label in [
+            "Problem Decomposition [0-10]",
+            "User & Stakeholder Identification [0-10]",
+            "Existing Solutions & Gap Analysis [0-10]",
+            "Proposed Solution Concept [0-10]",
+            "Innovation & Differentiation [0-10]"
+            ] %}
+            <div class="row">
+                <span>{{label}}</span>
+                <button type="button" class="score-btn" onclick="chg({{loop.index}},-1)">−</button>
+                <input id="p{{loop.index}}" name="p{{loop.index}}" value="0" readonly>
+                <button type="button" class="score-btn" onclick="chg({{loop.index}},1)">+</button>
+            </div>
+            {% endfor %}
+
+            <h3>Total: <span id="total">0</span>/50</h3>
+            <input type="hidden" name="total" id="totalInput">
+
+            <textarea name="remarks" placeholder="Remarks from Review 1"></textarea>
+
+            <div class="btn-group-review">
+                <button type="submit" class="btn primary">Save</button>
+                <a href="/download" class="btn secondary">Download Excel</a>
+                <a href="/panel/{{panel}}" class="btn back">Back</a>
+            </div>
+
+        </form>
+    </div>
+
+    <script>
+        function loadProblem() {
+            fetch(`/get-problem?team=${teamSelect.value}`)
+                .then(r => r.text()).then(t => problemBox.value = t)
+        }
+
+        function chg(i, v) {
+            let e = document.getElementById("p" + i);
+            let n = parseInt(e.value) + v;
+            if (n >= 0 && n <= 10) {
+                e.value = n;
+                calc();
+            }
+        }
+
+        function calc() {
+            let t = 0;
+            for (let i = 1; i <= 5; i++)
+                t += parseInt(document.getElementById("p" + i).value);
+
+            total.innerText = t;
+            totalInput.value = t;
+        }
+    </script>
+
+</body>
+
+</html>

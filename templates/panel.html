@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>{{ panel }}</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+
+<body>
+
+    <div class="navbar">
+        <div class="nav-left">Cognithon</div>
+        <div class="nav-right">
+            <a href="/">Home</a>
+        </div>
+    </div>
+
+    <div class="container">
+        <img src="/static/logo.png" class="logo">
+        <h2>{{ panel }}</h2>
+
+        <a class="btn primary wide" href="/panel/{{panel}}/review1">Review 1</a>
+        <a class="btn primary wide" href="/panel/{{panel}}/review2">Review 2</a>
+        <a class="btn primary wide" href="/panel/{{panel}}/review3">Review 3</a>
+    </div>
+
+</body>
+
+</html>

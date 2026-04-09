@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+    <title>Admin Login</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/static/style.css">
+
+</head>
+
+<body>
+
+    <!-- NAVBAR -->
+    <div class="navbar">
+
+        <div class="nav-left">
+            Welcome Admin
+        </div>
+
+        <div class="nav-right">
+
+            <a href="/">Home</a>
+
+        </div>
+
+    </div>
+
+
+
+    <!-- LOGIN CARD -->
+    <div class="admin-card">
+
+        <div class="admin-title">
+            Admin Login
+        </div>
+
+        <div class="admin-subtitle">
+            Enter username and password
+        </div>
+
+
+        <form method="POST">
+
+            <input 
+                type="text" 
+                name="username" 
+                placeholder="Enter Username"
+                required
+            >
+
+
+            <input 
+                type="password" 
+                name="password" 
+                placeholder="Enter Password"
+                required
+            >
+
+
+            {% if error %}
+
+                <div class="error-msg">
+
+                    {{ error }}
+
+                </div>
+
+            {% endif %}
+
+
+            <button class="btn admin-btn wide">
+
+                Login
+
+            </button>
+
+
+        </form>
+
+
+    </div>
+
+</body>
+
+</html>
