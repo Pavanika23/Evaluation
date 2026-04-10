@@ -201,10 +201,16 @@ def get_remark(panel, team, review):
 
     df = pd.read_excel(FILE, engine="openpyxl")
 
+    # get previous review
+    if review == "Review 1":
+        return ""
+
+    prev_review = f"Review {int(review.split()[-1]) - 1}"
+
     r = df[
         (df.Panel == panel) &
         (df.Team == team) &
-        (df.Review == review)
+        (df.Review == prev_review)
     ]
 
     return "" if r.empty else str(r.iloc[-1]["Remarks"])
