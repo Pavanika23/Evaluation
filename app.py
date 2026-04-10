@@ -201,11 +201,16 @@ def get_remark(panel, team, review):
 
     df = pd.read_excel(FILE, engine="openpyxl")
 
-    # get previous review
-    if review == "Review 1":
+    # extract review number safely
+    try:
+        review_num = int(review.split()[-1])
+    except:
         return ""
 
-    prev_review = f"Review {int(review.split()[-1]) - 1}"
+    if review_num == 1:
+        return ""
+
+    prev_review = f"Review {review_num - 1}"
 
     r = df[
         (df.Panel == panel) &
@@ -218,12 +223,16 @@ def get_remark(panel, team, review):
 
 @app.route("/get-remark")
 def get_remark_api():
-    return get_remark(
-        request.args["panel"],
-        request.args["team"],
-        request.args["review"]
-    )
 
+    panel = request.args.get("panel")
+    team = request.args.get("team")
+    review = request.args.get("review")
+
+    # fallback safety
+    if not review:
+        return ""
+
+    return get_remark(panel, team, review)
 
 @app.route("/get-problem")
 def get_problem():
