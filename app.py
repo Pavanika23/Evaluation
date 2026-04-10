@@ -1,5 +1,3 @@
-# (I am NOT shortening anything — keeping original style)
-
 from flask import Flask, render_template, request, redirect, send_file, session
 import pandas as pd
 import os
@@ -94,7 +92,41 @@ TEAMS = {
 # PROBLEM STATEMENTS
 TEAM_PROBLEMS = {
 
-    # KEEP SAME (unchanged from your file)
+    # PANEL 1
+    "AlgoArchitects": "Multilingual Content Generation Crisis",
+    "SHECODES": "Personalized Presentation Generation for Education",
+    "Blue Minds": "Offline AI Learning Platform for Rural Students",
+    "Data dynamos": "Teacher Performance Evaluation Gap",
+    "Data Avengers": "Agentic AI for Securing Home IoT Devices Using Deception & Autonomous Defence",
+    "Ctrlshe": "Agentic AI for Deepfake Detection & Authenticity Verification",
+    "Code blooded": "Smart Cities: Predictive AI for Air Quality Management",
+    "The HACKERS": "Industrial Emission Control: AI & Satellite-Based Monitoring",
+    "TechFusion": "Multi-Modal Disaster Response Agent",
+    "NovaAlert": "Autonomous Edge-Case Traffic Agent",
+
+    # PANEL 2
+    "CodeX": "Multilingual Content Generation Crisis",
+    "Trendsetter Trio": "Personalized Presentation Generation for Education",
+    "Smart Minds": "Offline AI Learning Platform for Rural Students",
+    "SkillNova": "Teacher Performance Evaluation Gap",
+    "Neural Nexus": "Agentic AI for Securing Home IoT Devices Using Deception & Autonomous Defence",
+    "Code Trio": "Agentic AI for Deepfake Detection & Authenticity Verification",
+    "Mind Cloud": "Smart Cities: Predictive AI for Air Quality Management",
+    "TriNova": "Industrial Emission Control: AI & Satellite-Based Monitoring",
+    "Cognify Coders": "Multi-Modal Disaster Response Agent",
+    "Synapse Squad": "Autonomous Edge-Case Traffic Agent",
+
+    # PANEL 3
+    "Tech MAVERICKS": "Multilingual Content Generation Crisis",
+    "Spark defenders": "Personalized Presentation Generation for Education",
+    "UniSphere Innovators": "Offline AI Learning Platform for Rural Students",
+    "TransitVertex": "Teacher Performance Evaluation Gap",
+    "Idea Igniters": "Agentic AI for Securing Home IoT Devices Using Deception & Autonomous Defence",
+    "CodeFlux": "Agentic AI for Deepfake Detection & Authenticity Verification",
+    "BuildIT": "Smart Cities: Predictive AI for Air Quality Management",
+    "RootX": "Industrial Emission Control: AI & Satellite-Based Monitoring",
+    "Tri Nova": "Multi-Modal Disaster Response Agent",
+    "TechSquad": "Autonomous Edge-Case Traffic Agent",
 }
 
 
